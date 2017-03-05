@@ -1,4 +1,4 @@
-# `<liquid-switch>`
+# &lt;liquid-switch&gt;
 
 _[Demo and API docs]()_
 
@@ -30,19 +30,19 @@ _[Demo and API docs]()_
 
 ## Installation and usage
 
-1. Install the component using [Bower](http://bower.io/):
+1. Install the component using [Bower](http://bower.io/):   
   ```bash
   $ bower kcmr/liquid-switch i -S
   ```
-2. Import Web Components polyfill:
+2. Import Web Components polyfill:   
   ```js
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   ```
-3. Import Custom Element:
+3. Import Custom Element:   
   ```html
   <link rel="import" href="bower_components/liquid-switch/liquid-switch.html">
   ```
-4. Use it!:
+4. Use it!:   
   ```html
   <liquid-switch checked>Switch label</liquid-switch>
   ```
