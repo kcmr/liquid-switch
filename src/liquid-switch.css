@@ -17,6 +17,7 @@
 }
 
 :host(.label-right) {
+  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 
