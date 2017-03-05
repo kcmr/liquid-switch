@@ -42,7 +42,7 @@
   @apply(--liquid-switch-bar);
 }
 
-.switch.changed {
+.changed {
   opacity: 1;
 }
 
