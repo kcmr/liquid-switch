@@ -1,5 +1,7 @@
 # &lt;liquid-switch&gt;
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/kcmr/liquid-switch)
+
 _[Demo and API docs](https://kcmr.github.io/liquid-switch/components/liquid-switch/)_
 
 `<liquid-switch>` is a custom element that acts as a checkbox and has the appearance of a switch.
