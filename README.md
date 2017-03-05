@@ -1,6 +1,6 @@
 # &lt;liquid-switch&gt;
 
-_[Demo and API docs]()_
+_[Demo and API docs](https://kcmr.github.io/liquid-switch/components/liquid-switch/)_
 
 `<liquid-switch>` is a custom element that acts as a checkbox and has the appearance of a switch.
 
@@ -33,7 +33,7 @@ _[Demo and API docs]()_
 1. Install the component using [Bower](http://bower.io/):   
 
   ```bash
-  $ bower kcmr/liquid-switch i -S
+  $ bower liquid-switch i -S
   ```
 2. Import Web Components polyfill:   
 
