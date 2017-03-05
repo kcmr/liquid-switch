@@ -46,6 +46,11 @@
           assert.isFalse(el.$.switch.classList.contains('switch--on'));
         });
 
+        test('adding disabled attribute sets aria-disabled to true', function() {
+          el.setAttribute('disabled', 'disabled');
+          assert.equal(el.getAttribute('aria-disabled'), 'true');
+        });
+
         test('_animationRunning is false when the animation ends', function() {
           el.click();
           var initialState = el._animationRunning;
@@ -74,6 +79,14 @@
           test('pressing space changes its checked property', function() {
             MockInteractions.pressSpace(el);
             assert.notEqual(el.checked, initialState);
+          });
+
+          test('checked state can not be changed by clicking or keypress if the element has disabled attribute', function() {
+            el.disabled = true;
+            el.click();
+            assert.equal(el.checked, initialState);
+            MockInteractions.pressSpace(el);
+            assert.equal(el.checked, initialState);
           });
         });
       });

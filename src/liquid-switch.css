@@ -21,6 +21,11 @@
   flex-direction: row-reverse;
 }
 
+:host([disabled]) .switch {
+  opacity: 0.7;
+  @apply(--liquid-switch-switch-disabled);
+}
+
 .switch {
   width: calc((var(--liquid-switch-switch-width)) * 1px);
   height: calc((var(--liquid-switch-knob-size) + (var(--liquid-switch-switch-padding) * 2)) * 1px);

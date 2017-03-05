@@ -17,6 +17,16 @@ Polymer({
       observer: '_checkedChanged'
     },
 
+    /**
+     * Disables click or keydown interaction and prevents changing its checked state.
+     */
+    disabled: {
+      type: Boolean,
+      value: false,
+      notify: true,
+      observer: '_disabledChanged'
+    },
+
     _animationRunning: {
       type: Boolean,
       value: false
@@ -40,6 +50,10 @@ Polymer({
     }
   },
 
+  _disabledChanged: function(disabled) {
+    this.setAttribute('aria-disabled', disabled);
+  },
+
   _setAnimationRunning: function() {
     this._animationRunning = false;
   },
@@ -48,7 +62,7 @@ Polymer({
    * Changes checked property.
    */
   toggle: function(e) {
-    if (e && e.type === 'keydown' && e.keyCode !== 32 || this._animationRunning) {
+    if (e && e.type === 'keydown' && e.keyCode !== 32 || this._animationRunning || this.disabled) {
       return;
     }
 
