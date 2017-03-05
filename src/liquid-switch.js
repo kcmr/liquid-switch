@@ -7,6 +7,9 @@ Polymer({
   },
 
   properties: {
+    /**
+     * Checked state.
+     */
     checked: {
       type: Boolean,
       value: false,
@@ -41,6 +44,9 @@ Polymer({
     this._animationRunning = false;
   },
 
+  /**
+   * Changes checked property.
+   */
   toggle: function(e) {
     if (e && e.type === 'keydown' && e.keyCode !== 32 || this._animationRunning) {
       return;
