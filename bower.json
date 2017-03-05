@@ -1,6 +1,9 @@
 {
   "name": "liquid-switch",
   "version": "0.0.0",
+  "authors": [
+    "Kus Cámara"
+  ],
   "description": "Switch element with a custom transition that acts as a native checkbox",
   "keywords": [
     "web-component",
@@ -10,6 +13,8 @@
     "a11y"
   ],
   "main": "liquid-switch.html",
+  "license": "MIT",
+  "homepage": "https://github.com/kcmr/liquid-switch/",
   "ignore": [],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.6.0"
