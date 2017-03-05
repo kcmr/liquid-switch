@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+```html
+<liquid-switch>
+  <h2>Hello liquid-switch</h2>
+</liquid-switch>
+```
+
+## Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+:-- | :-- | :--
+--liquid-switch-property | Description | Default value
+
+@demo demo/index.html
+-->
+
+<dom-module id="liquid-switch">
+  <template>
+    <link rel="stylesheet" href="./liquid-switch.css" inline>
+
+    <div class="label">
+      <slot></slot>
+    </div>
+
+    <div class="switch" id="switch">
+      <div class="knob"></div>
+    </div>
+
+  </template>
+  <script src="./liquid-switch.js" inline></script>
+</dom-module>

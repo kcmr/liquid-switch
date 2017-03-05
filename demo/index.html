@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>liquid-switch Demo</title>
+    <script>
+    window.Polymer = {
+      shadow: 'dom',
+      useNativeCSSProperties: true,
+      lazyRegister: true
+    }
+    </script>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../liquid-switch.html">
+    <style is="custom-style">
+    body {
+      font-family: sans-serif;
+      background-color: rgba(232, 229, 219, 0.58);
+      color: #484848;
+      font-size: 14px;
+      margin: 0;
+      padding: 10%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    liquid-switch {
+      max-width: 300px;
+      margin: auto auto 2px;
+      background-color: rgb(228, 225, 214);
+      border-radius: 2px;
+      padding: 10px;
+    }
+
+    liquid-switch:focus {
+      outline: 1px dotted;
+    }
+    </style>
+  </head>
+  <body unresolved>
+    <liquid-switch checked>Hello World</liquid-switch>
+    <liquid-switch class="large label-right">Not checked</liquid-switch>
+  </body>
+</html>
