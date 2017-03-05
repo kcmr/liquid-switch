@@ -4,27 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>liquid-switch Demo</title>
-    <script>
-    window.Polymer = {
-      shadow: 'dom',
-      useNativeCSSProperties: true,
-      lazyRegister: true
-    }
-    </script>
+    <script>window.Polymer = { dom: 'shadow', lazyRegister: true, useNativeCSSProperties: true };</script>
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../liquid-switch.html">
     <style is="custom-style">
     body {
       font-family: sans-serif;
-      background-color: rgba(232, 229, 219, 0.58);
+      background-color: rgba(228, 228, 228, 0.58);
       color: #484848;
       font-size: 14px;
       margin: 0;
-      padding: 10%;
+      padding: 5vh 10%;
       -webkit-tap-highlight-color: transparent;
     }
 
-    liquid-switch {
+    liquid-switch:not(.style-2):not(.no-style) {
       max-width: 300px;
       margin: auto auto 2px;
       background-color: rgb(228, 225, 214);
@@ -32,13 +27,96 @@
       padding: 10px;
     }
 
-    liquid-switch:focus {
+    liquid-switch:not(.no-style):focus {
       outline: 1px dotted;
+    }
+
+    demo-snippet {
+      max-width: 600px;
+      margin: auto auto 30px;
+    }
+    demo-snippet h1 {
+      font-weight: 300;
+      font-size: 22px;
+      margin: 0 -20px 20px;
+      padding: 0 20px 0.8em;
+      border-bottom: 1px solid #dadada;
     }
     </style>
   </head>
   <body unresolved>
-    <liquid-switch checked>Hello World</liquid-switch>
-    <liquid-switch class="large label-right" disabled checked>Not checked</liquid-switch>
+
+    <demo-snippet>
+      <h1>Default</h1>
+      <template>
+        <liquid-switch class="no-style">Switch label</liquid-switch>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h1>Using aria-labelledby instead of text inside it</h1>
+      <template>
+        <style>
+          .wrapper {
+            display: flex;
+            align-items: center;
+          }
+          .wrapper .no-style { margin-right: 10px; }
+        </style>
+        <div class="wrapper">
+          <liquid-switch class="no-style" aria-labelledby="switch-label"></liquid-switch>
+          <span id="switch-label">Switch label</span>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h1>Disabled</h1>
+      <template>
+        <liquid-switch disabled>I'm disabled</liquid-switch>
+        <liquid-switch disabled checked>I'm checked and disabled</liquid-switch>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h1>Label on the right</h1>
+      <template>
+        <liquid-switch checked class="label-right">Hello World</liquid-switch>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h1>Switch near to the label</h1>
+      <template>
+        <style>
+          .style-1 {
+            justify-content: flex-end;
+          }
+          .style-1 span {
+            margin-left: 10px;
+          }
+        </style>
+        <liquid-switch checked class="label-right style-1"><span>Hello World</span></liquid-switch>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h1>Custom sizes and colors</h1>
+      <template>
+        <style is="custom-style">
+          .style-2 {
+            display: inline-flex;
+
+            --liquid-switch-switch-width: 60;
+            --liquid-switch-switch-padding: 4;
+            --liquid-switch-knob-size: 20;
+            --liquid-switch-border-radius: 15px;
+            --liquid-switch-knob-color-on: rgb(236, 14, 81);
+            --liquid-switch-switch-background-color: #e8e8e8;
+          }
+        </style>
+        <liquid-switch class="style-2"></liquid-switch>
+      </template>
+    </demo-snippet>
   </body>
 </html>
