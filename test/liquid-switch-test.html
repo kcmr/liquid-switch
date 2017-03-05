@@ -6,13 +6,11 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
-
-    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../../iron-test-helpers/mock-interactions.html">
     <link rel="import" href="../liquid-switch.html">
   </head>
   <body>
 
-    <!-- You can use the document as a place to set up your fixtures. -->
     <test-fixture id="default">
       <template>
         <liquid-switch></liquid-switch>
@@ -25,12 +23,62 @@
 
         setup(function(){
           el = fixture('default');
+          el.async = function(cb) { cb.call(el); }
         });
 
-        test('is ok', function() {
-          assert.isOk(el);
+        test('aria-checked value is false', function() {
+          assert.equal(el.getAttribute('aria-checked'), 'false');
+        });
+
+        test('adding checked attribute sets aria-checked to true', function() {
+          el.setAttribute('checked', 'checked');
+          assert.equal(el.getAttribute('aria-checked'), 'true');
+        });
+
+        test('adding checked attribute adds "switch--on" className to switch', function() {
+          el.setAttribute('checked', 'checked');
+          assert.isTrue(el.$.switch.classList.contains('switch--on'));
+        });
+
+        test('removing checked attribute removes "switch--on" className to switch', function() {
+          el.setAttribute('checked', 'checked');
+          el.removeAttribute('checked');
+          assert.isFalse(el.$.switch.classList.contains('switch--on'));
+        });
+
+        test('_animationRunning is false when the animation ends', function() {
+          el.click();
+          var initialState = el._animationRunning;
+          var animationendEvent = new Event('animationend');
+          el.$.switch.dispatchEvent(animationendEvent);
+          assert.notEqual(el._animationRunning, initialState);
+          assert.isFalse(el._animationRunning);
+        });
+
+        suite('Interaction', function() {
+          var initialState;
+          setup(function() {
+            initialState = el.checked;
+          });
+
+          test('clicking the element changes its checked property', function() {
+            el.click();
+            assert.notEqual(el.checked, initialState);
+          });
+
+          test('pressing any key (tab) does not change its checked property', function() {
+            MockInteractions.pressAndReleaseKeyOn(el, 9); // tab
+            assert.equal(el.checked, initialState);
+          });
+
+          test('pressing space changes its checked property', function() {
+            MockInteractions.pressSpace(el);
+            assert.notEqual(el.checked, initialState);
+          });
         });
       });
+
+      a11ySuite('default');
     </script>
 
   </body>
