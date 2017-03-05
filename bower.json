@@ -1,10 +1,13 @@
 {
   "name": "liquid-switch",
   "version": "0.0.0",
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "Switch element with a custom transition that acts as a native checkbox",
   "keywords": [
     "web-component",
-    "polymer"
+    "polymer",
+    "checkbox",
+    "switch",
+    "a11y"
   ],
   "main": "liquid-switch.html",
   "ignore": [],
