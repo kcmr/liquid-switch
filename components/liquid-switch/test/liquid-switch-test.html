@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <link rel="import" href="../../iron-test-helpers/mock-interactions.html">
+    <link rel="import" href="../liquid-switch.html">
+  </head>
+  <body>
+
+    <test-fixture id="default">
+      <template>
+        <liquid-switch></liquid-switch>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<liquid-switch>', function() {
+        var el;
+
+        setup(function(){
+          el = fixture('default');
+          el.async = function(cb) { cb.call(el); }
+        });
+
+        test('aria-checked value is false', function() {
+          assert.equal(el.getAttribute('aria-checked'), 'false');
+        });
+
+        test('adding checked attribute sets aria-checked to true', function() {
+          el.setAttribute('checked', 'checked');
+          assert.equal(el.getAttribute('aria-checked'), 'true');
+        });
+
+        test('adding checked attribute adds "switch--on" className to switch', function() {
+          el.setAttribute('checked', 'checked');
+          assert.isTrue(el.$.switch.classList.contains('switch--on'));
+        });
+
+        test('removing checked attribute removes "switch--on" className to switch', function() {
+          el.setAttribute('checked', 'checked');
+          el.removeAttribute('checked');
+          assert.isFalse(el.$.switch.classList.contains('switch--on'));
+        });
+
+        test('adding disabled attribute sets aria-disabled to true', function() {
+          el.setAttribute('disabled', 'disabled');
+          assert.equal(el.getAttribute('aria-disabled'), 'true');
+        });
+
+        test('_animationRunning is false when the animation ends', function() {
+          el.click();
+          var initialState = el._animationRunning;
+          var animationendEvent = new Event('animationend');
+          el.$.switch.dispatchEvent(animationendEvent);
+          assert.notEqual(el._animationRunning, initialState);
+          assert.isFalse(el._animationRunning);
+        });
+
+        suite('Interaction', function() {
+          var initialState;
+          setup(function() {
+            initialState = el.checked;
+          });
+
+          test('clicking the element changes its checked property', function() {
+            el.click();
+            assert.notEqual(el.checked, initialState);
+          });
+
+          test('pressing any key (tab) does not change its checked property', function() {
+            MockInteractions.pressAndReleaseKeyOn(el, 9); // tab
+            assert.equal(el.checked, initialState);
+          });
+
+          test('pressing space changes its checked property', function() {
+            MockInteractions.pressSpace(el);
+            assert.notEqual(el.checked, initialState);
+          });
+
+          test('checked state can not be changed by clicking or keypress if the element has disabled attribute', function() {
+            el.disabled = true;
+            el.click();
+            assert.equal(el.checked, initialState);
+            MockInteractions.pressSpace(el);
+            assert.equal(el.checked, initialState);
+          });
+        });
+      });
+
+      a11ySuite('default');
+    </script>
+
+  </body>
+</html>

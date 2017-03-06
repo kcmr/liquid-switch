@@ -1,0 +1,37 @@
+{
+  "name": "liquid-switch",
+  "authors": [
+    "Kus Cámara"
+  ],
+  "description": "Switch element with a custom transition that acts as a native checkbox",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "checkbox",
+    "switch",
+    "a11y"
+  ],
+  "main": "liquid-switch.html",
+  "license": "MIT",
+  "homepage": "https://github.com/kcmr/liquid-switch/",
+  "ignore": [],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.6.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.4.1",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5"
+  },
+  "_release": "afc880101f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "afc880101fa2bb7d61721fa8e2d8fed075bc1180"
+  },
+  "_source": "https://github.com/kcmr/liquid-switch.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/kcmr/liquid-switch.git",
+  "_direct": true
+}
