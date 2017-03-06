@@ -46,7 +46,7 @@ Polymer({
     if (!this.$.switch.classList.contains('changed')) {
       this.async(function() {
         this.$.switch.classList.add('changed');
-      }, 260);
+      }, 330);
     }
   },
 
