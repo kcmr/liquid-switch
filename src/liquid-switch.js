@@ -66,6 +66,8 @@ Polymer({
       return;
     }
 
+    e.preventDefault();
+
     this.$.switch.classList.toggle('switch--off', this.checked);
     this._animationRunning = true;
     this.checked = !this.checked;
